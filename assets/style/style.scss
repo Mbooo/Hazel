@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  user-select: none;
+  outline: none;
+  -webkit-touch-callout: none;
+}
+
+body {
+  line-height: 1;
+  // font-size: calc(100vw / 1920 * 24);
+  font-family: "Lato", sans-serif;
+}
+
+main {
+  margin-top: 70px;
+}
+
+.profile-head {
+  margin-bottom: 150px;
+
+  .profile-info {
+    padding-top: 20px;
+    padding-bottom: 30px;
+  }
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.login-container {
+  margin-top: 100px;
+}
+
+.inscription-message {
+  margin: 20px 0 !important;
+}
+
+.connection-title {
+  margin: 30px 0;
+}

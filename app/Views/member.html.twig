@@ -1,0 +1,99 @@
+{% extends "./base.html.twig" %}
+
+
+{% block body %}
+
+<div class="ui container profile-head">
+    <div class="ui grid">
+        <div class="six wide column">
+            <div class="column ">
+                <img class="ui medium circular image" src="https://semantic-ui.com/images/avatar/large/elliot.jpg">
+            </div>
+
+        </div>
+        <div class="ten wide column">
+            <div class="profile-info">
+                <h2 class="uppercase">{{userPage.name}}</h2>
+                <p class="uppercase">{{userPage.role}}</p>
+                <p>
+
+                    {{userPage.description}}
+                </p>
+                <p>
+                    Lieu pour les rendez-vous : <br>
+                    {{userPage.placeForAppointments}}
+                </p>
+            </div>
+
+            {% if loggedin == true  and userPage.role is same as 'Photographe'%}
+
+                <form class="ui form" id="reservationForm">
+                    <h4 class="ui dividing header">Réservation</h4>
+                    <div class="field">
+                        <div class="ui calendar" id="calendar">
+                            <div class="ui input left icon">
+                                <i class="calendar icon"></i>
+                                <input name="date" placeholder="Date et heure" type="text">
+
+                            </div>
+                        </div>
+                        <input name="username" type="text" value={{userPage.username}} hidden>
+                    </div>
+                    <button class="ui button secondary" id="bookMe" type="submit">Réserver</button>
+                    <div class="ui error message"></div>
+                </form>
+
+                <div class="ui message inscription-message" id="message-when-reserved">
+                        Votre rendez vous a été pris en compte
+                </div>
+
+            {% elseif userPage.role is not same as 'Modele' %}
+                <h4 class="ui dividing header">Pour reserver un créneau veuillez
+                    <a href="/login">
+                        vous connecter</a>
+                </h4>
+            {% endif %}
+
+
+        </div>
+    </div>
+</div>
+
+<div class="ui container">
+
+    <h1>PORTFOLIO</h1>
+
+    <div class="ui three stackable cards">
+        <div class="card">
+            <div class="image">
+                <img src="https://semantic-ui.com/images/avatar/large/elliot.jpg">
+            </div>
+        </div>
+        <div class="card">
+            <div class="image">
+                <img src="https://semantic-ui.com/images/avatar/large/helen.jpg">
+            </div>
+        </div>
+        <div class="card">
+            <div class="image">
+                <img src="https://semantic-ui.com/images/avatar/large/jenny.jpg">
+            </div>
+        </div>
+        <div class="card">
+            <div class="image">
+                <img src="https://semantic-ui.com/images/avatar/large/veronika.jpg">
+            </div>
+        </div>
+        <div class="card">
+            <div class="image">
+                <img src="https://semantic-ui.com/images/avatar/large/stevie.jpg">
+            </div>
+        </div>
+        <div class="card">
+            <div class="image">
+                <img src="https://semantic-ui.com/images/avatar/large/steve.jpg">
+            </div>
+        </div>
+    </div>
+
+</div>{% endblock %}

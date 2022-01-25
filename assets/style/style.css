@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  outline: none;
+  -webkit-touch-callout: none;
+}
+
+body {
+  line-height: 1;
+  font-family: "Lato", sans-serif;
+}
+
+.grid.container {
+  margin-top: 5em;
+}
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.ui.action.input input[type="file"] {
+  display: none;
+}
+
+#description{
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  tap-highlight-color: rgba(255,255,255,0);
+  line-height: 1.21428571em;
+  padding: 0.67857143em 1em;
+  font-size: 1em;
+  background: #fff;
+  border: 1px solid rgba(34,36,38,.15);
+  color: rgba(0,0,0,.87);
+  border-radius: 0.28571429rem;
+  -webkit-box-shadow: 0 0 0 0 transparent inset;
+  box-shadow: 0 0 0 0 transparent inset;
+  -webkit-transition: color .1s ease,border-color .1s ease;
+  transition: color .1s ease,border-color .1s ease;
+  width: 100%;
+}
+main {
+  margin-top: 70px;
+}
+
+.profile-head {
+  margin-bottom: 150px;
+}
+
+.profile-head .profile-info {
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.login-container {
+  margin-top: 100px;
+}
+
+.inscription-message {
+  margin: 20px 0 !important;
+}
+
+.connection-title {
+  margin: 30px 0;
+}
+/*# sourceMappingURL=style.css.map */

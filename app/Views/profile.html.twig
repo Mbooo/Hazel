@@ -1,0 +1,279 @@
+{% extends "./base.html.twig" %}
+
+
+{% block body %}
+
+    <div class="ui container profile-head">
+        <div class="ui grid">
+            <div class="six wide column">
+                <div class="column ">
+                    <img class="ui medium circular image" src="https://semantic-ui.com/images/avatar/large/elliot.jpg">
+                </div>
+
+            </div>
+            <div class="ten wide column">
+                <div class="profile-info">
+                    <h2 class="uppercase">{{userPage.name}}</h2>
+                    <p class="uppercase">{{userPage.role}}</p>
+                    <p>
+                        {{userPage.description}}
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    {% if userPage.role is same as "admin" %}
+        <div class="ui four item menu">
+            <a href="/profile/edit/informations" class="{{ navLinkActive is same as("edit") ? "active"}} item">Éditer mon profil</a>
+            <a href="/profile/appointments" class="{{ navLinkActive is same as("appointments") ? "active"}} item">Mes rendez-vous</a>
+
+            <a href="/profile/admin" class="{{ navLinkActive is same as("admin") ? "active"}} item">Panel Administrateur</a>
+        </div>
+    {% else %}
+
+    <div class="ui three item menu">
+        <a href="/profile/edit/informations" class="{{ navLinkActive is same as("edit") ? "active"}} item">Éditer mon profil</a>
+        <a href="/profile/appointments" class="{{ navLinkActive is same as("appointments") ? "active"}} item">Mes rendez-vous</a>
+        <a href="/profile/work" class="{{ navLinkActive is same as("work") ? "active"}} item">Portfolio</a>
+
+    </div>
+    {% endif %}
+
+    <div class="ui container">
+
+        {#             PORTFOLIO               #}
+
+        {% if navLinkActive is same as 'work' %}
+
+            <h1>Portfolio</h1>
+            <form class="ui form" id="upload_files_portfolio" method="post">
+                <div class="ui middle aligned center aligned grid container">
+                    <div class="ui fluid segment">
+                        <input type="file"  class="inputfile" id="embedpollfileinput" />
+                        <label for="embedpollfileinput" class="ui huge green right floated button">
+                            <i class="ui upload icon"></i>
+                            Ajouter du contenu
+                        </label>
+                    </div>
+
+                </div>
+            </form>
+            <div class="ui three stackable cards">
+                <div class="card">
+                    <div class="image">
+                        <img src="https://semantic-ui.com/images/avatar/large/elliot.jpg">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image">
+                        <img src="https://semantic-ui.com/images/avatar/large/helen.jpg">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image">
+                        <img src="https://semantic-ui.com/images/avatar/large/jenny.jpg">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image">
+                        <img src="https://semantic-ui.com/images/avatar/large/veronika.jpg">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image">
+                        <img src="https://semantic-ui.com/images/avatar/large/stevie.jpg">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image">
+                        <img src="https://semantic-ui.com/images/avatar/large/steve.jpg">
+                    </div>
+                </div>
+            </div>
+
+
+
+        {#              MENU EDITION DES INFORMATIONS            #}
+
+        {% elseif navLinkActive is same as 'edit'%}
+            <h1> Éditer mon profil</h1>
+            <div class="ui tabular menu">
+                <a href="/profile/edit/informations" class="item {{ editAction is same as("informations") ? "active" }}">
+                    Informations
+                </a>
+                <a href="/profile/edit/password" class="item {{ editAction is same as("password") ? "active" }}">
+                    Mot de passe
+                </a>
+            </div>
+
+            {#     FORMULAIRE MODIFICATION DES INFORMATIONS PERSO       #}
+
+            {% if editAction is same as 'informations' %}
+                <form class="ui form" id="informationsModificationForm" method="post">
+                    <div class="field">
+                        <label>Nom complet</label>
+                        <input type="text" name="name" placeholder="Nom complet" value="{{ userPage.name }}">
+                    </div>
+                    <div class="field">
+                        <label>Description</label>
+                        <input id="description" type="textarea" rows="5" name="description" value="{{ userPage.description }}">
+                    </div>
+                    <div class="field">
+                        <label>Lieu pour les rendez-vous</label>
+                        <input type="text" name="place" placeholder="Adresse pour les rendez-vous" value="{{ userPage.placeForAppointments }}">
+                    </div>
+                    <div class="field">
+                        <label>Numéro de téléphone</label>
+                        <input type="text" name="phone" placeholder="Numéro de téléphone" value="{{ userPage.phone }}">
+                    </div>
+
+                    <div class="field">
+                        <label>Date de naissance</label>
+                        <div class="ui calendar" id="calendarBirthday">
+                            <div class="ui input left icon">
+                                <i class="calendar icon"></i>
+                                <input name="dateOfBirth" placeholder="Date de naissace" type="text" value="{{ userPage.birthday }}">
+                            </div>
+                        </div>
+
+                    </div>
+                    <input name="userId" value="{{ userPage.id }}" hidden>
+                    <div class="ui error message"></div>
+                    <button class="ui button" dtype="submit" id="submitInformations">Sauvegarder</button>
+                </form>
+                <div class="ui message inscription-message" id="message-when-informations-changed">
+                    Vos informations ont bien été modifiées
+                </div>
+
+            {#           FORMULAIRE DE MODIFICATION DU MDP          #}
+
+            {% else %}
+                <form class="ui form" id="passwordModificationForm" method="post">
+                    <div class="field">
+                        <label>Mot de passe actuel</label>
+                        <input type="password" name="oldpassword" placeholder="Mot de passe actuel">
+                    </div>
+                    <div class="field">
+                        <label>Nouveau mot de passe</label>
+                        <input type="password" name="newpassword" placeholder="Nouveau mot de passe">
+                    </div>
+                    <div class="field">
+                        <label>Confirmer votre mot de passe</label>
+                        <input type="password" name="confirmPassword" placeholder="Confirmer votre mot de passe">
+                    </div>
+                    <div class="ui error message"></div>
+                    <button class="ui button" type="submit" id="submitPassword">Sauvegarder</button>
+                </form>
+                <div class="ui message inscription-message" id="message-when-password-changed">
+                    Votre mot de passe a bien été modifié
+                </div>
+            {% endif %}
+
+
+        {#               AFFICHAGE DES RENDEZ-VOUS            #}
+
+        {% elseif navLinkActive is same as 'appointments' %}
+
+            <h1>Mes rendez-vous</h1>
+            <div class="ui cards">
+                {% set index = 1 %}
+                {% for appointment in appointments %}
+                    <div class="card">
+                        <div class="content">
+
+                            <img class="right floated mini ui image" src="https://semantic-ui.com/images/avatar/large/elliot.jpg">
+
+
+                            <div class="header">
+                                {{ appointment.name }}
+                            </div>
+                            <div class="meta">
+                                {{ appointment.date }}
+                            </div>
+                        </div>
+
+                        {% if appointment.isConfirmedByClient == 0 %}
+                            <div class="ui negative message">
+                                Ce rendez-vous a été annulé
+                            </div>
+
+
+                        {% elseif userPage.role is same as "Photographe" and appointment.isConfirmedByPhotographe == 0%}
+                        <div class="extra content">
+                            <form id="{{ index }}-confirmation-form" method="post">
+                                <div class="ui two buttons">
+                                    <input type="text" name="userValidating" value="{{ userPage.username }}" hidden>
+                                    <input type="text" name="userWaitingForValidation" value="{{ appointment.username }}" hidden>
+                                    <input type="text" name="dateBrut" value="{{ appointment.dateBrut }}" hidden>
+                                    <button onclick='confirmationOfAppointment("{{ index }}-confirmation-form","confirm")' type="submit" class="ui green button">Confirmer</button>
+                                    <button onclick='confirmationOfAppointment("{{ index }}-confirmation-form","refuse")' type="submit" class="ui red button">Refuser</button>
+                                </div>
+                            </form>
+                        </div>
+                            {% set index = index + 1 %}
+                        {% elseif appointment.isConfirmedByPhotographe != 1%}
+                            <div class="ui visible message">
+                                En attente de confirmation du rendez-vous
+                            </div>
+
+                        {% else %}
+                            <div class="ui success message">
+                                Rendez-vous confirmé !
+                            </div>
+                        {% endif %}
+                    </div>
+
+                {% endfor %}
+            </div>
+
+
+            {#             PANEL ADMIN           #}
+
+        {% else %}
+
+            <form id="adminActionForm" method="post">
+                <table class="ui celled table">
+                    <thead>
+                    <tr><th>Nom d'utilisateur</th>
+                        <th>Adresse email</th>
+                        <th>Rôle</th>
+                        <th>Nom</th>
+                        <th>Date de naissance</th>
+                        <th>Action</th>
+                    </tr></thead>
+                    <tbody>
+                    {% set index = 1 %}
+                    {% for member in members%}
+                        <tr>
+                            <td data-label="Nom d'utilisateur">
+                                <input type="text" name="id" id="{{ index }}-id" value="{{ member.id }}" hidden>
+                                {{ member.username }}
+                            </td>
+                            <td data-label="Adresse email">{{ member.email }}</td>
+                            <td data-label="Rôle">
+                                <input type="text" id="{{ index }}-role" name="role" value="{{ member.role }}" hidden>
+                                {{ member.role }}
+                            </td>
+                            <td data-label="Nom">{{ member.name }}</td>
+                            <td data-label="Date de naissance">{{ member.birthday }}</td>
+                            <td data-label="Action">
+                                {#                                <button type="submit" class="ui inverted yellow button">Modifier</button>#}
+                                <button onclick='adminDeletingAccount("adminActionForm",{{ index }})' type="submit" class="ui inverted red button">Supprimer</button>
+                            </td>
+                        </tr>
+                        {% set index = index + 1 %}
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </form>
+
+        {% endif %}
+
+    </div>
+{% endblock %}

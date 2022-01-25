@@ -1,0 +1,40 @@
+{% extends "./base.html.twig" %}
+
+
+{% block body %}
+
+<div class="profile">
+    <div class="naming">
+        <h3 class="name">Aymane Alhamid</h3>
+        <h4 class="role">Photographer / Director / Model</h4>
+    </div>
+
+    <p class="form-announcement">
+        To book me for a shooting as a model or a photographer
+                        please type in this form.
+    </p>
+
+</div>
+
+
+<form class="form-container">
+    <div class="input-container">
+        <label class="form-label" for="typeInput">Chose Type</label>
+        <input aria-describedby="emailHelp" class="form-control styled" id="typeInput" placeholder="Email" type="email">
+        <div class="form-text" id="emailHelp">We'll never share your email with anyone else.</div>
+
+        <select aria-label="Default select example" class="form-select">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+
+    </div>
+    <div class="input-container">
+        <label class="form-label" for="exampleInputPassword1">Password</label>
+        <input class="form-control styled" id="exampleInputPassword1" placeholder="Password" type="password">
+    </div>
+
+    <button class="submit" type="submit">BOOK</button>
+</form>{% endblock %}

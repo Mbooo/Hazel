@@ -1,0 +1,38 @@
+{% extends "./base.html.twig" %}
+
+{% block body %}
+<div class="page-login">
+    <div class="ui centered grid container">
+        <div class="nine wide column login-container">
+            <div class="ui fluid card">
+                <div class="content">
+                    <h2 class="connection-title">Se connecter</h2>
+                    <form class="ui form" method="POST" id="loginForm">
+                        <div class="field">
+                            <label>Nom d'utilisateur / Email</label>
+                            <input name="username" placeholder="Nom d'utilisateur ou Email" type="text">
+                        </div>
+
+                        <div class="field">
+                            <label>Mot de passe</label>
+                            <input name="password" placeholder="Mot de passe" type="password">
+                        </div>
+
+                        <button class="ui secondary labeled icon button" type="submit" id="submitLogin">
+                            <i class="unlock alternate icon"></i>
+                            Se connecter
+                        </button>
+
+                    <div class="ui error message"></div>
+
+                    </form>
+                    <div class="ui message inscription-message">
+                        Pas encore de compte ?
+                        <a href="/register">S'inscrire</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

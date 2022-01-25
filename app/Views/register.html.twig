@@ -1,0 +1,62 @@
+{% extends "./base.html.twig" %}
+
+{% block body %}
+<div class="page-login">
+    <div class="ui centered grid container">
+        <div class="nine wide column login-container">
+
+            <p></p>
+            <div class="ui fluid card">
+                <div class="content">
+                    <h2 class="connection-title">S'inscrire</h2>
+                    <form class="ui form" id="registerForm" method="POST">
+
+                        <div class="two fields">
+                            <div class="field">
+                                <label>Nom complet</label>
+                                <input name="name" placeholder="Nom Prenom" type="text">
+                            </div>
+                            <div class="field">
+                                <label>Email</label>
+                                <input name="email" placeholder="Email" type="email">
+                            </div>
+                        </div>
+                        <div class="two fields">
+                            <div class="field">
+                                <label>Nom d'utilisateur</label>
+                                <input name="username" placeholder="Nom d'utilisateur" type="text">
+                            </div>
+                            <div class="field">
+                                <label>Mot de passe</label>
+                                <input name="password" placeholder="Mot de passe" type="password">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Type de compte</label>
+                            <select class="ui dropdown" name="role">
+                                <option value="">Selectionnez un type de compte</option>
+                                <option value="Photographe">Photographe</option>
+                                <option value="Modele">Modèle</option>
+                            </select>
+                        </div>
+
+                        <button class="ui secondary labeled icon button" id="submitRegister" type="submit">
+                            <i class="unlock alternate icon"></i>
+                            S'inscrire
+                        </button>
+
+                        <div class="ui error message"></div>
+
+                    </form>
+
+
+                    <div class="ui message inscription-message">
+                        Vous avez déjà un compte ?
+                        <a href="/login">
+                            Se connecter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>{% endblock %}
